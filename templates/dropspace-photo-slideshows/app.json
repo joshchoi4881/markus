@@ -1,0 +1,77 @@
+{
+  "name": "{{APP_NAME}}",
+  "description": "YOUR_DESCRIPTION (e.g. event recaps from YOUR_EVENT_NAME)",
+  "audience": "YOUR_AUDIENCE (e.g. local music community, event attendees)",
+  "problem": "Event memories live in people's camera rolls, not your feed",
+  "differentiator": "Real moments from real events, not staged content",
+  "url": "YOUR_APP_URL",
+  "category": "events",
+  "monetization": "none",
+  "voice": "warm, community-first. you were there and you want everyone to feel it.",
+  "pipelineType": "manual",
+  "apiKeyEnv": "{{API_KEY_ENV}}",
+  "minQueue": 3,
+  "platforms": {
+    "tiktok": {
+      "enabled": true,
+      "contentSource": "slideshows",
+      "postingTimes": [
+        "13:00"
+      ],
+      "tiktokPrivacyLevel": "SELF_ONLY",
+      "tiktokSettings": {
+        "allow_comments": true,
+        "allow_duet": false,
+        "allow_stitch": false,
+        "auto_add_music": true,
+        "is_commercial": false,
+        "is_your_brand": false,
+        "is_branded_content": false
+      },
+      "useDropspacePlatform": true
+    },
+    "instagram": {
+      "enabled": true,
+      "contentSource": "slideshows",
+      "postingTimes": [
+        "12:00"
+      ],
+      "useDropspacePlatform": true
+    }
+  },
+  "contentSources": {
+    "clipper": {
+      "type": "photo-slideshow",
+      "photoFolders": [
+        {
+          "driveFolderId": "YOUR_GOOGLE_DRIVE_FOLDER_ID_1",
+          "label": "YOUR_FOLDER_LABEL (e.g. Jan 24 Event Photos)"
+        },
+        {
+          "driveFolderId": "YOUR_GOOGLE_DRIVE_FOLDER_ID_2",
+          "label": "YOUR_FOLDER_LABEL"
+        }
+      ],
+      "photosPerSlideshow": 8,
+      "minPhotos": 4,
+      "maxPhotos": 12,
+      "outputDir": "~/apps/{{APP_NAME}}/slideshows/",
+      "formats": [
+        "jpg",
+        "jpeg",
+        "png",
+        "heic"
+      ]
+    }
+  },
+  "cta": {
+    "tiktok": "more from the night → link in bio",
+    "instagram": "see you next time → link in bio",
+    "default": "link in bio"
+  },
+  "skipDays": [],
+  "notifications": {
+    "channel": "slack",
+    "target": "YOUR_SLACK_CHANNEL_ID"
+  }
+}

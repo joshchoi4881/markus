@@ -1,0 +1,72 @@
+{
+  "name": "{{APP_NAME}}",
+  "description": "YOUR_DESCRIPTION (e.g. DJ set clips from YOUR_EVENT_NAME)",
+  "audience": "YOUR_AUDIENCE (e.g. electronic music fans, local club scene)",
+  "problem": "Great sets don't get shared — they disappear after the night ends",
+  "differentiator": "Real clips from real events, not promotional material",
+  "url": "YOUR_APP_URL",
+  "category": "music",
+  "monetization": "none",
+  "voice": "energetic but real. credit the artists. build the community.",
+  "pipelineType": "manual",
+  "apiKeyEnv": "{{API_KEY_ENV}}",
+  "minQueue": 3,
+  "platforms": {
+    "tiktok": {
+      "enabled": true,
+      "contentSource": "clips",
+      "postingTimes": [
+        "11:00",
+        "18:00"
+      ],
+      "tiktokPrivacyLevel": "SELF_ONLY",
+      "tiktokSettings": {
+        "allow_comments": true,
+        "allow_duet": false,
+        "allow_stitch": false,
+        "auto_add_music": false,
+        "is_commercial": false,
+        "is_your_brand": false,
+        "is_branded_content": false
+      },
+      "useDropspacePlatform": true
+    },
+    "instagram": {
+      "enabled": true,
+      "contentSource": "clips",
+      "postingTimes": [
+        "12:00"
+      ],
+      "useDropspacePlatform": true
+    }
+  },
+  "contentSources": {
+    "clipper": {
+      "type": "video-clips",
+      "driveFolderIds": [
+        "YOUR_GOOGLE_DRIVE_FOLDER_ID_1",
+        "YOUR_GOOGLE_DRIVE_FOLDER_ID_2"
+      ],
+      "clipDurationSec": 60,
+      "minClipDurationSec": 15,
+      "maxClipDurationSec": 90,
+      "outputDir": "~/apps/{{APP_NAME}}/clips/",
+      "peakDetection": true,
+      "formats": [
+        "mp4",
+        "mov",
+        "avi"
+      ]
+    }
+  },
+  "cta": {
+    "tiktok": "full set → link in bio",
+    "instagram": "link in bio",
+    "default": "link in bio"
+  },
+  "skipDays": [],
+  "notifications": {
+    "channel": "slack",
+    "target": "YOUR_SLACK_CHANNEL_ID"
+  }
+}

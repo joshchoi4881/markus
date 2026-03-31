@@ -1,0 +1,171 @@
+{
+  "_comment": "Copy this file to ~/apps/<your-app>/app.json and fill in your values",
+  "name": "My App",
+  "description": "What your app does in one sentence",
+  "audience": "Who uses your app (e.g. indie hackers, creators, small teams)",
+  "problem": "The specific pain your app solves",
+  "differentiator": "Why your app vs alternatives",
+  "url": "https://your-app.com",
+  "category": "saas",
+  "monetization": "subscription",
+  "voice": "lowercase, casual, genuine. write like a real person, not a brand.",
+  "pipelineType": "ai-generated",
+  "apiKeyEnv": "DROPSPACE_API_KEY_MYAPP",
+  "slackChannel": "C0YOUR_SLACK_CHANNEL_ID",
+  "minQueue": 7,
+  "platforms": {
+    "tiktok": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "11:00",
+        "15:00",
+        "19:00"
+      ],
+      "tiktokPrivacyLevel": "SELF_ONLY",
+      "tiktokSettings": {
+        "allow_comments": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "auto_add_music": false,
+        "is_commercial": false,
+        "is_your_brand": false,
+        "is_branded_content": false
+      },
+      "useDropspacePlatform": true
+    },
+    "instagram": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "12:00"
+      ],
+      "useDropspacePlatform": true
+    },
+    "twitter": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "09:30",
+        "17:00"
+      ],
+      "twitterIsPremium": false,
+      "useDropspacePlatform": true
+    },
+    "linkedin": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "08:30"
+      ],
+      "weekdaysOnly": true,
+      "useDropspacePlatform": true
+    },
+    "reddit": {
+      "enabled": false,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "10:00"
+      ],
+      "useDropspacePlatform": true
+    },
+    "facebook": {
+      "enabled": false,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "13:00"
+      ],
+      "useDropspacePlatform": true
+    }
+  },
+  "_platform_notes": {
+    "connectionId": "If you connected your own social account via Dropspace dashboard, put the connection UUID here and remove useDropspacePlatform",
+    "useDropspacePlatform": "Set to true to use Dropspace's managed accounts (no personal social account needed)",
+    "contentType": "Default format for this platform. Options: story-slideshow (visual), ugc-reaction, ugc-talking (video), text-single, text-post (text)",
+    "tiktokPrivacyLevel": "SELF_ONLY = posts go to your drafts (you swap music + publish manually). PUBLIC_TO_EVERYONE = auto-publish."
+  },
+  "integrations": {
+    "_comment": "All integrations are OPTIONAL. The pipeline works with just Dropspace.",
+    "supabase": {
+      "projectId": "",
+      "testEmailPatterns": [
+        "@yourcompany\\.com$",
+        "test@"
+      ]
+    },
+    "stripe": {
+      "productIds": []
+    },
+    "posthog": {
+      "projectId": ""
+    },
+    "ga4": {
+      "propertyId": ""
+    },
+    "sentry": {
+      "org": "",
+      "project": ""
+    },
+    "github": {
+      "org": "",
+      "repo": ""
+    }
+  },
+  "xResearch": {
+    "_comment": "Search queries for X/Twitter research (what's trending in your niche)",
+    "queries": [
+      "\"your niche\" tool",
+      "#buildinpublic your-category",
+      "your-problem solution"
+    ],
+    "competitors": [
+      "competitor1",
+      "competitor2"
+    ]
+  },
+  "engage": {
+    "twitter": {
+      "_comment": "Required for X engagement. Run x-oauth-setup.js to get these.",
+      "queries": [
+        "\"your niche\" pain point -from:youraccount"
+      ],
+      "blockedHandles": [
+        "youraccount"
+      ],
+      "maxAgeHours": 48,
+      "minLikes": 1,
+      "dedupDays": 14,
+      "xApiCredentials": {
+        "clientId": "X_MYAPP_CLIENT_ID",
+        "clientSecret": "X_MYAPP_CLIENT_SECRET",
+        "accessToken": "X_MYAPP_ACCESS_TOKEN",
+        "refreshToken": "X_MYAPP_REFRESH_TOKEN",
+        "bearerToken": "X_MYAPP_BEARER_TOKEN"
+      }
+    }
+  },
+  "cta": {
+    "tiktok": "try it → link in bio",
+    "instagram": "link in bio",
+    "twitter": "try it →",
+    "linkedin": "check it out →",
+    "reddit": "been using this →",
+    "facebook": "try it free →",
+    "default": "link in bio"
+  },
+  "skipDays": [],
+  "_skipDays_note": "Array of day numbers to skip posting. 0=Sunday, 6=Saturday. Empty = post every day.",
+  "mediaGen": {
+    "_comment": "Optional. Defaults to Fal.ai. Supported providers: fal, replicate, openai",
+    "image": {
+      "provider": "fal",
+      "model": "nano-banana-2",
+      "envKey": "FAL_KEY"
+    },
+    "video": {
+      "provider": "fal",
+      "model": "veo3.1",
+      "envKey": "FAL_KEY"
+    }
+  }
+}

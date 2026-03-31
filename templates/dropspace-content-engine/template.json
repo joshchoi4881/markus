@@ -1,0 +1,76 @@
+{
+  "slug": "dropspace-content-engine",
+  "name": "AI Content Engine",
+  "description": "Fully autonomous content pipeline across all 6 platforms. AI generates posts, schedules them, analyzes performance, and self-improves over time. Zero manual effort after setup.",
+  "category": "ai-content",
+  "difficulty": "advanced",
+  "platforms": ["tiktok", "instagram", "twitter", "linkedin", "reddit", "facebook"],
+  "requiredEnvVars": [
+    "DROPSPACE_API_KEY",
+    "ANTHROPIC_API_KEY",
+    "FAL_KEY"
+  ],
+  "optionalEnvVars": [
+    "BIRD_AUTH_TOKEN (for X research)",
+    "BIRD_CT0 (for X research)",
+    "X_BEARER_TOKEN (X API fallback)",
+    "SUPABASE_ACCESS_TOKEN (for user analytics)",
+    "STRIPE_SECRET_KEY (for revenue attribution)",
+    "POSTHOG_PERSONAL_API_KEY (for traffic data)"
+  ],
+  "requiredTools": ["node 18+"],
+  "optionalTools": [
+    "bird CLI (for X research — @steipete/bird)",
+    "Slack channel (for cron notifications)"
+  ],
+  "crons": [
+    {
+      "name": "midnight",
+      "schedule": "0 0 * * *",
+      "timezone": "America/New_York",
+      "timeout": 900,
+      "description": "Refresh analytics, clean up old assets, send nightly reports"
+    },
+    {
+      "name": "x-research",
+      "schedule": "30 0 * * *",
+      "timezone": "America/New_York",
+      "timeout": 300,
+      "description": "Scan X/Twitter for trending hooks and competitor signals (optional — requires Bird CLI)"
+    },
+    {
+      "name": "self-improve-all",
+      "schedule": "0 1 * * *",
+      "timezone": "America/New_York",
+      "timeout": 3600,
+      "description": "Analyze performance and generate new posts for all platforms"
+    },
+    {
+      "name": "schedule-day",
+      "schedule": "0 2 * * *",
+      "timezone": "America/New_York",
+      "timeout": 2400,
+      "description": "Schedule all queued posts for today via Dropspace"
+    },
+    {
+      "name": "engage",
+      "schedule": "0 13 * * *",
+      "timezone": "America/New_York",
+      "timeout": 600,
+      "description": "Find X/Twitter conversations to join and draft replies (optional — requires X API OAuth)"
+    }
+  ],
+  "setupSteps": [
+    "Get a Dropspace API key at https://dropspace.dev → Settings → API Keys",
+    "Get an Anthropic API key at https://console.anthropic.com",
+    "Get a Fal.ai API key at https://fal.ai → Keys",
+    "Edit app.json — replace all YOUR_* placeholders with your product details",
+    "Edit FORMAT.md — customize voice and per-platform rules",
+    "Edit CONTEXT.md — fill in product facts, features, and what NOT to claim",
+    "Run: node ~/dropspace/private/scripts/setup-crons.js",
+    "Create crons in OpenClaw with the output from setup-crons.js",
+    "Optional: set up X research with Bird CLI (see engage/ directory)",
+    "Test with: node ~/dropspace/private/scripts/test-pipeline.js --app YOUR_APP"
+  ],
+  "files": ["app.json", "FORMAT.md", "CONTEXT.md"]
+}

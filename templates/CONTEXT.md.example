@@ -1,0 +1,45 @@
+# Context — Your Product Facts
+
+*The LLM reads this file when generating content. Only include facts you want in posts.*
+
+## What It Is
+
+- **Name:** [Your product name]
+- **URL:** [your-app.com]
+- **One-liner:** [What it does in one sentence]
+- **Built with:** [Tech stack if relevant — e.g. "Next.js, Supabase, Stripe"]
+- **Launched:** [Date]
+
+## What You Can Claim
+
+*Only include verified facts. The LLM will use these in posts.*
+
+- [e.g. "Supports 9 social platforms"]
+- [e.g. "Free tier available"]
+- [e.g. "API + dashboard + MCP integration"]
+
+## What You Cannot Claim
+
+*Be explicit about what NOT to say. The LLM tends to exaggerate if not constrained.*
+
+- No specific user counts (unless you update this file regularly)
+- No revenue numbers
+- No "fastest" / "best" / "only" claims unless verifiable
+- No roadmap promises
+
+## Audience
+
+- [Who uses your product]
+- [What they care about]
+- [What pain brings them to you]
+
+## Competitors
+
+*Optional — helps the LLM position your product without naming competitors in posts.*
+
+- [Competitor 1] — [what they do differently]
+- [Competitor 2] — [what they do differently]
+
+---
+
+*Update this file when facts change. The LLM reads it every run.*
