@@ -13,7 +13,7 @@ const path = require('path');
 const fs = require('fs');
 
 // ── Args ──
-const { parseArgs, resolveApiKey, extractDeletionInfo } = require('../core/helpers');
+const { parseArgs, resolveApiKey } = require('../core/helpers');
 const pathsLib = require('../core/paths');
 const { getArg: _getArg } = parseArgs();
 function getArg(name, def) {
