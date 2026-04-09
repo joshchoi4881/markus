@@ -614,8 +614,8 @@ async function main() {
   }
 
   // Signups
-  if (report.newSignups?.length) {
-    slackLines.push(`\n*New signups (${days}d):* ${report.newSignups.length}`);
+  if (report.todaySignups?.total) {
+    slackLines.push(`\n*Signups (today):* ${report.todaySignups.total}`);
   }
 
   // Stripe
@@ -624,9 +624,8 @@ async function main() {
   }
 
   // Pipeline queues
-  if (report.pipelineQueues) {
-    const qs = report.pipelineQueues;
-    const qLines = Object.entries(qs).map(([p, q]) => `${p}: ${q}`).join(' · ');
+  if (report.pipeline && typeof report.pipeline === 'object' && !report.pipeline.error) {
+    const qLines = Object.entries(report.pipeline).map(([p, v]) => `${p}: ${v.hooksInQueue ?? '?'}`).join(' · ');
     slackLines.push(`\n*Queues:* ${qLines}`);
   }
 

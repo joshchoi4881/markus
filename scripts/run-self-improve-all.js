@@ -11,7 +11,6 @@
 
 const { execSync } = require('child_process');
 const path = require('path');
-const fs = require('fs');
 const { parseArgs, sendAppReport, loadJSON } = require('../core/helpers');
 const paths = require('../core/paths');
 
@@ -128,7 +127,6 @@ for (const app of aiApps) {
 
   // ── Slack delivery: queue status per platform ──
   const slackLines = [`_🧠 Self-Improve — ${targetApp} — ${new Date().toISOString().split('T')[0]}_`];
-  const allPlatforms = [...results.success, ...results.retried, ...results.failed.map(f => f.platform)];
   for (const plat of enabledPlatforms) {
     try {
       const strat = loadJSON(paths.strategyPath(targetApp, plat), {});
