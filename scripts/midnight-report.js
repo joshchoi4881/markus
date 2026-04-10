@@ -596,20 +596,24 @@ async function main() {
   const slackLines = [`_🌙 Midnight Report — ${appName} — ${new Date().toISOString().split('T')[0]} (${days}d window)_`];
 
   // PostHog
-  if (report.posthog) {
+  if (report.posthog && !report.posthog.error && !report.posthog.skipped) {
     const ph = report.posthog;
     slackLines.push(`\n*PostHog:* ${ph.uniqueUsers || 0} users · ${ph.totalPageviews || 0} pageviews`);
-    if (ph.topSources?.length) {
-      slackLines.push(`Top: ${ph.topSources.slice(0, 5).map(s => `${s.source} (${s.count})`).join(', ')}`);
+    // topSources is an object { "direct": 91, "google": 20, ... }
+    if (ph.topSources && typeof ph.topSources === 'object') {
+      const sources = Object.entries(ph.topSources).slice(0, 5).map(([src, count]) => `${src} (${count})`);
+      if (sources.length) slackLines.push(`Top: ${sources.join(', ')}`);
     }
   }
 
   // GA4
-  if (report.ga4) {
+  if (report.ga4 && !report.ga4.error && !report.ga4.skipped) {
     const g = report.ga4;
-    slackLines.push(`\n*GA4:* ${g.users || 0} users · ${g.sessions || 0} sessions · ${g.pageviews || 0} pageviews`);
-    if (g.topSources?.length) {
-      slackLines.push(`Top: ${g.topSources.slice(0, 5).map(s => `${s.source} (${s.users} users)`).join(', ')}`);
+    slackLines.push(`\n*GA4:* ${g.totalUsers || 0} users · ${g.totalSessions || 0} sessions · ${g.totalPageviews || 0} pageviews`);
+    // bySource is an array of { source, medium, users, sessions }
+    if (Array.isArray(g.bySource) && g.bySource.length) {
+      const sources = g.bySource.slice(0, 5).map(s => `${s.source} (${s.users} users)`);
+      slackLines.push(`Top: ${sources.join(', ')}`);
     }
   }
 
@@ -619,8 +623,9 @@ async function main() {
   }
 
   // Stripe
-  if (report.stripe) {
-    slackLines.push(`\n*Stripe (30d):* ${report.stripe.totalCharges || 0} charges · $${((report.stripe.totalRevenue || 0) / 100).toFixed(0)} revenue`);
+  if (report.stripe?.last30d) {
+    const s = report.stripe.last30d;
+    slackLines.push(`\n*Stripe (30d):* ${s.totalCharges || 0} charges · $${((s.totalRevenue || 0) / 100).toFixed(0)} revenue`);
   }
 
   // Pipeline queues
@@ -632,9 +637,10 @@ async function main() {
   // Completed posts
   if (report.completedPosts) {
     const cp = report.completedPosts;
-    const total = Object.values(cp).reduce((a, b) => a + b, 0);
-    const cpLines = Object.entries(cp).map(([p, c]) => `${p} ${c}`).join(' · ');
-    slackLines.push(`\n*Posts (${days}d):* ${total} total — ${cpLines}`);
+    const total = cp.total || 0;
+    const byPlat = cp.byPlatform || {};
+    const cpLines = Object.entries(byPlat).map(([p, c]) => `${p} ${c}`).join(' · ');
+    slackLines.push(`\n*Posts (${days}d):* ${total} total${cpLines ? ' — ' + cpLines : ''}`);
   }
 
   // Health
