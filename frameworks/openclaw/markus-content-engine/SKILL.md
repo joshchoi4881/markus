@@ -16,7 +16,7 @@ metadata:
   }
 ---
 
-# Dropspace Content Engine
+# AI Content Engine
 
 Fully autonomous content pipeline. Every night: pull analytics → identify winning hooks → generate new posts → schedule across 6 platforms. The feedback loop compounds — each cycle produces better content because it learns from real engagement data.
 

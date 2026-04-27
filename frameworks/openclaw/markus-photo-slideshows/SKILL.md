@@ -17,7 +17,7 @@ metadata:
   }
 ---
 
-# Dropspace Photo Slideshows
+# Event Photo Slideshows
 
 Turn event photos from Google Drive into daily TikTok/Instagram slideshows. Upload photos, the pipeline handles the rest — resizing, text overlays, captions, scheduling.
 

@@ -1,4 +1,4 @@
-# Event Photo Slideshows — Manus
+# Event Photo Slideshows
 
 Turn event photos into TikTok/Instagram slideshows via Dropspace. Runs in Manus cloud sandbox.
 

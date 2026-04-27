@@ -1,4 +1,4 @@
-# AI Content Engine — Manus
+# AI Content Engine
 
 Self-improving content pipeline for Dropspace. Runs in Manus cloud sandbox with built-in scheduling.
 

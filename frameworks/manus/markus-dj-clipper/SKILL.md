@@ -1,4 +1,4 @@
-# DJ Set Clipper — Manus
+# DJ Set Clipper
 
 Extract short clips from DJ set recordings and schedule to TikTok/Instagram via Dropspace. Runs in Manus cloud sandbox.
 

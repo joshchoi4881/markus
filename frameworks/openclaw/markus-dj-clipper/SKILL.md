@@ -17,7 +17,7 @@ metadata:
   }
 ---
 
-# Dropspace DJ Clipper
+# DJ Set Clipper
 
 Turn long DJ sets and music performances into short-form clips. Analyzes audio for transitions, cuts clips, credits every song, schedules across TikTok and Instagram.
 
