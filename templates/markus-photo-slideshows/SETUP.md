@@ -69,7 +69,7 @@ The slideshow generator will:
 ## Quick Start
 
 ```bash
-node setup.js --template dropspace-photo-slideshows
+node setup.js --template markus-photo-slideshows
 # Follow prompts, then:
 node clipper/scripts/create-slideshows.js --app your-app --folder DRIVE_FOLDER_ID --event "Event Name"
 ```

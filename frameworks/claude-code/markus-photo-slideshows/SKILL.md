@@ -1,7 +1,7 @@
 ---
-name: dropspace-photo-slideshows
+name: markus-photo-slideshows
 description: "Turn event photos from Google Drive into TikTok/Instagram slideshows via Dropspace. Face-aware text positioning, community voice captions. Use when asked to create slideshows from event photos or manage photo-based social content."
-homepage: https://www.dropspace.dev/community/dropspace-photo-slideshows
+homepage: https://www.dropspace.dev/community/markus-photo-slideshows
 source: https://github.com/joshchoi4881/markus
 requires:
   env: [DROPSPACE_API_KEY]
@@ -38,7 +38,7 @@ node scripts/init-app.js --app myapp --platforms tiktok,instagram
 
 ### 4. Edit app.json
 
-Open `apps/myapp/app.json` and fill in your event/community details. Set up Google Workspace credentials for Drive access (see `templates/dropspace-photo-slideshows/SETUP.md`).
+Open `apps/myapp/app.json` and fill in your event/community details. Set up Google Workspace credentials for Drive access (see `templates/markus-photo-slideshows/SETUP.md`).
 
 ### 5. Validate
 

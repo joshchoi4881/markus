@@ -1,5 +1,5 @@
 {
-  "slug": "dropspace-dj-clipper",
+  "slug": "markus-dj-clipper",
   "name": "DJ Set Clipper",
   "description": "Extract short clips from DJ sets and music events in Google Drive. Auto-detects peak moments via audio analysis. Posts go to TikTok drafts (SELF_ONLY) so you can swap music before publishing.",
   "category": "music",

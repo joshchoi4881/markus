@@ -1,7 +1,7 @@
 {
-  "name": "dropspace-agent",
+  "name": "markus",
   "version": "1.0.0",
-  "description": "Autonomous content automation pipeline for Dropspace \u2014 self-improving multi-platform social media engine",
+  "description": "Autonomous content automation pipeline for Markus \u2014 self-improving multi-platform social media engine",
   "private": true,
   "dependencies": {},
   "optionalDependencies": {

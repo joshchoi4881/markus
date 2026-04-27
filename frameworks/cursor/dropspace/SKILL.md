@@ -439,7 +439,7 @@ On 429: check `Retry-After` header (seconds). Rate limit headers: `X-RateLimit-L
 
 For the full automation pipeline (self-improving content engine, DJ clipper, photo slideshows), see the companion skills and repo:
 
-- **dropspace-content-engine** — autonomous content generation + scheduling
-- **dropspace-dj-clipper** — long recordings → short-form clips
-- **dropspace-photo-slideshows** — event photos → daily TikTok slideshows
+- **markus-content-engine** — autonomous content generation + scheduling
+- **markus-dj-clipper** — long recordings → short-form clips
+- **markus-photo-slideshows** — event photos → daily TikTok slideshows
 - Repo: https://github.com/joshchoi4881/markus

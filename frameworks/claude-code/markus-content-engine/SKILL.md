@@ -1,7 +1,7 @@
 ---
-name: dropspace-content-engine
+name: markus-content-engine
 description: "Self-improving content pipeline for Dropspace. Analyzes post performance, generates new content across 6 platforms, schedules publishing, and compounds strategy over time. Run nightly for best results. Use when asked to run the content engine, generate social posts, or manage the content pipeline."
-homepage: https://www.dropspace.dev/community/dropspace-content-engine
+homepage: https://www.dropspace.dev/community/markus-content-engine
 source: https://github.com/joshchoi4881/markus
 requires:
   env: [DROPSPACE_API_KEY, ANTHROPIC_API_KEY, FAL_KEY]

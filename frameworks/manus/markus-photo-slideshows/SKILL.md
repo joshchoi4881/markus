@@ -13,7 +13,7 @@ cd markus && npm install
 node scripts/init-app.js --app myapp --platforms tiktok,instagram
 ```
 
-Set `DROPSPACE_API_KEY` via Manus Settings > Environment. Edit `apps/myapp/app.json` with your event details. Set up Google Workspace credentials for Drive access (see `templates/dropspace-photo-slideshows/SETUP.md`).
+Set `DROPSPACE_API_KEY` via Manus Settings > Environment. Edit `apps/myapp/app.json` with your event details. Set up Google Workspace credentials for Drive access (see `templates/markus-photo-slideshows/SETUP.md`).
 
 ```bash
 node scripts/test-pipeline.js --app myapp

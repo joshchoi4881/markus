@@ -1,7 +1,7 @@
 ---
-name: dropspace-content-engine
+name: markus-content-engine
 description: "Self-improving autonomous content pipeline. Analyzes post performance across 6 platforms, generates new content with AI (slideshows, tweets, linkedin posts, reddit threads), schedules via Dropspace API. Gets smarter every night — each cycle learns from real engagement data. Use when asked to set up autonomous content posting, run the content engine, or manage multi-platform social media automation."
-homepage: https://www.dropspace.dev/community/dropspace-content-engine
+homepage: https://www.dropspace.dev/community/markus-content-engine
 source: https://github.com/joshchoi4881/markus
 metadata:
   {
@@ -33,7 +33,7 @@ If `canvas` fails to install, that's fine — text-only formats still work. For 
 ### 2. Run the setup wizard
 
 ```bash
-node setup.js --template dropspace-content-engine
+node setup.js --template markus-content-engine
 ```
 
 Walks you through API keys, platform selection, and app configuration.
@@ -96,7 +96,7 @@ node scripts/schedule-day.js --app myapp
 
 ## Links
 
-- Community page: https://www.dropspace.dev/community/dropspace-content-engine
+- Community page: https://www.dropspace.dev/community/markus-content-engine
 - Case study: https://www.dropspace.dev/case-studies/march-2026
 - Repo: https://github.com/joshchoi4881/markus
 - Dropspace API docs: https://www.dropspace.dev/docs

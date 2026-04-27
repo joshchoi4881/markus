@@ -1,7 +1,7 @@
 ---
-name: dropspace-dj-clipper
+name: markus-dj-clipper
 description: "Turn DJ sets and long music recordings into short-form TikTok/Instagram clips. Analyzes audio for energy peaks and transitions, cuts 30-second vertical clips, identifies songs via Whisper-based timestamping, generates captions with artist credits, schedules across platforms via Dropspace API. Use when asked to clip DJ sets, extract highlights from long recordings, or automate music content."
-homepage: https://www.dropspace.dev/community/dropspace-dj-clipper
+homepage: https://www.dropspace.dev/community/markus-dj-clipper
 source: https://github.com/joshchoi4881/markus
 metadata:
   {
@@ -32,7 +32,7 @@ git clone https://github.com/joshchoi4881/markus && cd markus && npm install
 ### 2. Run the setup wizard
 
 ```bash
-node setup.js --template dropspace-dj-clipper
+node setup.js --template markus-dj-clipper
 ```
 
 ### 3. Set your API keys
@@ -91,6 +91,6 @@ node scripts/schedule-day.js --app myapp
 
 ## Links
 
-- Community page: https://www.dropspace.dev/community/dropspace-dj-clipper
+- Community page: https://www.dropspace.dev/community/markus-dj-clipper
 - Case study: https://www.dropspace.dev/case-studies/march-2026
 - Repo: https://github.com/joshchoi4881/markus

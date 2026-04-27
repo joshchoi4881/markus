@@ -14,7 +14,7 @@ apt-get install -y ffmpeg
 node scripts/init-app.js --app myapp --platforms tiktok,instagram
 ```
 
-Set `DROPSPACE_API_KEY` via Manus Settings > Environment. Edit `apps/myapp/app.json` with your event details. Set up Google Workspace credentials for Drive access (see `templates/dropspace-dj-clipper/SETUP.md`).
+Set `DROPSPACE_API_KEY` via Manus Settings > Environment. Edit `apps/myapp/app.json` with your event details. Set up Google Workspace credentials for Drive access (see `templates/markus-dj-clipper/SETUP.md`).
 
 ```bash
 node scripts/test-pipeline.js --app myapp

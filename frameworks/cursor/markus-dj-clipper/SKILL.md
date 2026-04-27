@@ -34,7 +34,7 @@ export DROPSPACE_API_KEY="ds_live_..."   # from dropspace.dev/settings/api
 node scripts/init-app.js --app myapp --platforms tiktok,instagram
 ```
 
-Edit `apps/myapp/app.json` with your event/artist details. Set up Google Workspace credentials for Drive access if needed (see `templates/dropspace-dj-clipper/SETUP.md`).
+Edit `apps/myapp/app.json` with your event/artist details. Set up Google Workspace credentials for Drive access if needed (see `templates/markus-dj-clipper/SETUP.md`).
 
 ### 4. Validate
 

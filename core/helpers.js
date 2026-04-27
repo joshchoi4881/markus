@@ -172,7 +172,7 @@ function recordFailure(failuresPath, rule, context = {}) {
 function recordError(appName, platform, error, context = {}) {
   try {
     const errLogPath = path.join(
-      process.env.HOME || '', 'dropspace', 'apps', appName, platform, 'errors.log'
+      process.env.HOME || '', 'markus', 'apps', appName, platform, 'errors.log'
     );
     const entry = `[${new Date().toISOString()}] ${error}${context.hook ? ` (hook: ${context.hook})` : ''}\n`;
     fs.appendFileSync(errLogPath, entry);
@@ -337,7 +337,7 @@ const CHAR_LIMITS = {
 // ── Engine Resolution ──
 // Determines which create-post engine to use based on format type.
 // Used by schedule-day.js.
-const SKILLS_DIR = process.env.DROPSPACE_AGENT_DIR || path.resolve(__dirname, '..');
+const SKILLS_DIR = process.env.MARKUS_AGENT_DIR || path.resolve(__dirname, '..');
 
 /**
  * Resolve the create-post engine script path for a given queue entry.

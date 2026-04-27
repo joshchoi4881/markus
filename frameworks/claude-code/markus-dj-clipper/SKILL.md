@@ -1,7 +1,7 @@
 ---
-name: dropspace-dj-clipper
+name: markus-dj-clipper
 description: "Extract short clips from DJ set recordings and schedule to TikTok/Instagram via Dropspace. Uses ffmpeg for audio analysis and video cropping. Use when asked to clip DJ sets, extract video highlights, or create short-form music content."
-homepage: https://www.dropspace.dev/community/dropspace-dj-clipper
+homepage: https://www.dropspace.dev/community/markus-dj-clipper
 source: https://github.com/joshchoi4881/markus
 requires:
   env: [DROPSPACE_API_KEY]
@@ -43,7 +43,7 @@ node scripts/init-app.js --app myapp --platforms tiktok,instagram
 
 ### 5. Edit app.json
 
-Open `apps/myapp/app.json` and fill in your event/artist details. Set up Google Workspace credentials for Drive access if videos are on Drive (see `templates/dropspace-dj-clipper/SETUP.md`).
+Open `apps/myapp/app.json` and fill in your event/artist details. Set up Google Workspace credentials for Drive access if videos are on Drive (see `templates/markus-dj-clipper/SETUP.md`).
 
 ### 6. Validate
 

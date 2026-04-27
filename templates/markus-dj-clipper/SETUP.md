@@ -68,7 +68,7 @@ The clipper will:
 ## Quick Start
 
 ```bash
-node setup.js --template dropspace-dj-clipper
+node setup.js --template markus-dj-clipper
 # Follow prompts, then:
 node clipper/scripts/clip-engine.js --app your-app --source DRIVE_FILE_ID --event "Event Name" --artist "DJ Name"
 ```

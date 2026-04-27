@@ -1,7 +1,7 @@
 ---
-name: dropspace-photo-slideshows
+name: markus-photo-slideshows
 description: "Turn event photos into daily TikTok/Instagram slideshows. Downloads photos from Google Drive, resizes for mobile, assembles slideshows with face-aware text overlays, generates captions in a configurable community voice, schedules one post per day via Dropspace API. Use when asked to automate event photo posting, create slideshows from Google Drive, or schedule photo content."
-homepage: https://www.dropspace.dev/community/dropspace-photo-slideshows
+homepage: https://www.dropspace.dev/community/markus-photo-slideshows
 source: https://github.com/joshchoi4881/markus
 metadata:
   {
@@ -34,7 +34,7 @@ For image processing: macOS `brew install pkg-config cairo pango`, Linux `apt in
 ### 2. Run the setup wizard
 
 ```bash
-node setup.js --template dropspace-photo-slideshows
+node setup.js --template markus-photo-slideshows
 ```
 
 ### 3. Set your API keys
@@ -43,7 +43,7 @@ node setup.js --template dropspace-photo-slideshows
 export DROPSPACE_API_KEY="ds_live_..."     # from dropspace.dev/settings/api
 ```
 
-For Google Drive access, configure GWS credentials (see `templates/dropspace-photo-slideshows/SETUP.md`).
+For Google Drive access, configure GWS credentials (see `templates/markus-photo-slideshows/SETUP.md`).
 
 Save in a `.env` file (copy from `templates/.env.example`). Add `.env` to `.gitignore` to avoid committing secrets.
 
@@ -99,6 +99,6 @@ Requires ffmpeg for image resizing (`~/bin/ffmpeg` or system install).
 
 ## Links
 
-- Community page: https://www.dropspace.dev/community/dropspace-photo-slideshows
+- Community page: https://www.dropspace.dev/community/markus-photo-slideshows
 - Case study: https://www.dropspace.dev/case-studies/march-2026
 - Repo: https://github.com/joshchoi4881/markus

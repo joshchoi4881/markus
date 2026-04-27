@@ -70,7 +70,7 @@ export FAL_KEY="..."                        # required for visual platforms
 ## Quick Start
 
 ```bash
-node setup.js --template dropspace-content-engine
+node setup.js --template markus-content-engine
 # Follow the prompts to configure your app
 ```
 

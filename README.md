@@ -1,4 +1,4 @@
-# dropspace-agent — Automation Pipeline Core
+# markus — Automation Pipeline Core
 
 All social media automations use this shared library. Supports multiple apps with two pipeline types:
 
@@ -33,7 +33,7 @@ cp templates/.env.example .env
 
 # 3. Pick a template and run setup
 node setup.js --list-templates
-node setup.js --template dropspace-content-engine
+node setup.js --template markus-content-engine
 
 # 4. Validate your setup
 source load-env.sh  # or: source .env
