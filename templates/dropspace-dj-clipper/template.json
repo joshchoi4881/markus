@@ -35,7 +35,7 @@
     "Install ffmpeg: brew install ffmpeg (macOS) or apt install ffmpeg (Linux)",
     "Edit app.json — replace YOUR_GOOGLE_DRIVE_FOLDER_ID with your actual Drive folder IDs",
     "Edit CONTEXT.md — fill in your event name, venue, and artist handles",
-    "Run the clipper: node ~/markus/private/clipper/scripts/clip-engine.js --app YOUR_APP",
+    "Run the clipper: node ~/markus/clipper/scripts/clip-engine.js --app YOUR_APP",
     "Review the generated clips, then queue them manually or via the clipper script",
     "Set up schedule-day cron to auto-schedule queued clips each morning"
   ],
@@ -43,7 +43,7 @@
     "TikTok posts are SELF_ONLY by default — they go to your drafts so you can add music before publishing",
     "Peak detection uses audio amplitude analysis to find the most energetic moments",
     "Clips default to 60 seconds — tweak clipDurationSec in app.json",
-    "See ~/markus/private/clipper/ for the full clipper documentation"
+    "See ~/markus/clipper/ for the full clipper documentation"
   ],
   "files": ["app.json", "FORMAT.md", "CONTEXT.md"]
 }

@@ -124,7 +124,7 @@ Key fields:
 ## Scripts
 
 ```
-~/markus/private/
+~/markus/
 ├── core/
 │   ├── paths.js                   # Single source of truth for all path resolution
 │   ├── platforms.js               # Platform config registry (replaces 27 wrapper scripts)
@@ -207,7 +207,7 @@ Ongoing   Analytics cron         → Detects post deletions → post.deleted web
 
 ```bash
 # 1. Scaffold
-node ~/markus/private/scripts/init-app.js --app myapp --platforms tiktok,instagram,twitter
+node ~/markus/scripts/init-app.js --app myapp --platforms tiktok,instagram,twitter
 
 # 2. Configure
 vim ~/markus/apps/myapp/app.json  # Fill in: pipelineType, notifications, skipDays, integrations, posting times

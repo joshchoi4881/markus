@@ -7,7 +7,7 @@ Read this file before executing any cron task. These rules are non-negotiable.
 When a script fails or produces an incorrect result:
 
 1. **Read the error** — understand the stack trace or output
-2. **Read the script source** — find the bug (`~/markus/private/`)
+2. **Read the script source** — find the bug (`~/markus/`)
 3. **Fix the script** — make the minimal edit to fix the bug
 4. **Log the fix** — append to the app's `failures.json`:
    ```json
@@ -203,7 +203,7 @@ export SUPABASE_ACCESS_TOKEN="$(op read 'op://your-vault/SUPABASE_ACCESS_TOKEN/p
 
 - Data: `~/markus/apps/{app}/{platform}/` (resolved via `paths.js`)
 - App config: `~/markus/apps/{app}/app.json`
-- Shared code: `~/markus/private/`
+- Shared code: `~/markus/`
 - Always pass `--app <name> --platform <platform>`. Paths resolve via `paths.js`.
 
 ## Deleting Bad Posts
@@ -232,7 +232,7 @@ When you see a `POSTS_NEEDED` block:
 5. Save posts AND notes in one command via `add-posts.js` (NEVER edit strategy.json directly):
    ```bash
    echo '{"posts":[...], "notes":"Your strategy notes...", "crossNotes":"Insights for other platforms..."}' | \
-     node ~/markus/private/scripts/add-posts.js --app dropspace --platform tiktok
+     node ~/markus/scripts/add-posts.js --app dropspace --platform tiktok
    ```
 
 **Post blueprint structure:**
@@ -326,7 +326,7 @@ Notes are saved atomically with posts via stdin JSON to `add-posts.js`. No separ
 Pass a JSON object via stdin with posts, notes, crossNotes, and failures:
 ```bash
 echo '{"posts":[...], "notes":"Your strategic reasoning...", "crossNotes":"Insights for other platforms...", "failures":["rule1","rule2"]}' | \
-  node ~/markus/private/scripts/add-posts.js --app dropspace --platform tiktok
+  node ~/markus/scripts/add-posts.js --app dropspace --platform tiktok
 ```
 
 - **posts**: Array of post objects (required, can be empty `[]` if only saving notes)

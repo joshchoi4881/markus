@@ -166,5 +166,5 @@ console.log(`\nNext steps:`);
 console.log(`  1. Edit ${appConfigFile} with your app details (description, voice, posting times)`);
 console.log(`  2. Add your Dropspace API key to load-env.sh:`);
 console.log(`     export DROPSPACE_API_KEY_${appName.toUpperCase()}="ds_live_..."`);
-console.log(`  3. Run: node ~/markus/private/test-pipeline.js --app ${appName}`);
-console.log(`  4. Set up crons: node ~/markus/private/setup-crons.js`);
+console.log(`  3. Run: node ~/markus/scripts/test-pipeline.js --app ${appName}`);
+console.log(`  4. Set up crons: node ~/markus/scripts/setup-crons.js`);

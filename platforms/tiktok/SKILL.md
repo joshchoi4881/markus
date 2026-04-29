@@ -9,12 +9,12 @@ Automate TikTok slideshow marketing: generate → overlay → publish via Dropsp
 
 ## Pipeline Architecture
 
-All platforms share a common engine at `~/markus/private/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
+All platforms share a common engine at `~/markus/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
 
 **Data:** `~/markus/apps/{app}/tiktok/` (strategy.json, posts.json, failures.json, pending-batches.json, posts/)
 **App config:** `~/markus/apps/{app}/app.json` (single source of truth for app identity, integrations, platform settings)
 
-### Key Scripts (all in `~/markus/private/`)
+### Key Scripts (all in `~/markus/`)
 ```bash
 # Create a post (auto-picks from queue)
 node engines/create-visual-post-engine.js --app <APP> --platform tiktok --next --schedule "2026-03-04T12:00:00Z"

@@ -34,7 +34,7 @@
     "Create a Google Drive folder for your event photos and copy the folder ID",
     "Edit app.json — replace YOUR_GOOGLE_DRIVE_FOLDER_ID with your actual folder IDs",
     "Edit CONTEXT.md — fill in your event name, venue, and community details",
-    "Run the slideshow generator: node ~/markus/private/clipper/scripts/create-slideshows.js --app YOUR_APP",
+    "Run the slideshow generator: node ~/markus/clipper/scripts/create-slideshows.js --app YOUR_APP",
     "Review and approve the generated slideshows",
     "Set up schedule-day cron to auto-schedule approved slideshows each morning"
   ],
@@ -43,7 +43,7 @@
     "The pipeline selects the best photos automatically (configurable in app.json)",
     "TikTok auto-adds music by default for better reach",
     "photosPerSlideshow defaults to 8 — adjust in app.json based on your event",
-    "See ~/markus/private/clipper/ for the full slideshow documentation"
+    "See ~/markus/clipper/ for the full slideshow documentation"
   ],
   "files": ["app.json", "FORMAT.md", "CONTEXT.md"]
 }

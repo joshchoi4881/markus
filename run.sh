@@ -1,6 +1,6 @@
 #!/bin/bash
 # Runner script for cron jobs. Sources env and executes the given command.
-# Usage: bash ~/markus/private/run.sh node ~/markus/private/scripts/schedule-day.js --app dropspace
+# Usage: bash ~/markus/run.sh node ~/markus/scripts/schedule-day.js --app dropspace
 set -euo pipefail
-source ~/markus/private/load-env.sh
+source "$(dirname "$(readlink -f "$0")")/load-env.sh"
 exec "$@"

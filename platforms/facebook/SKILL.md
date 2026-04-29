@@ -9,12 +9,12 @@ Automate Facebook carousel marketing via Dropspace. Visual platform using the sa
 
 ## Pipeline Architecture
 
-All platforms share a common engine at `~/markus/private/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
+All platforms share a common engine at `~/markus/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
 
 **Data:** `~/markus/apps/{app}/facebook/` (strategy.json, posts.json, failures.json, pending-batches.json, posts/)
 **App config:** `~/markus/apps/{app}/app.json`
 
-### Key Scripts (all in `~/markus/private/`)
+### Key Scripts (all in `~/markus/`)
 ```bash
 # Create a carousel (auto-picks from queue)
 node engines/create-visual-post-engine.js --app <APP> --platform facebook --next --schedule "2026-03-04T14:00:00Z"

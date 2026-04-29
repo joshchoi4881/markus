@@ -9,12 +9,12 @@ Automate Twitter marketing with single tweets and threads. Twitter is where your
 
 ## Pipeline Architecture
 
-All platforms share a common engine at `~/markus/private/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
+All platforms share a common engine at `~/markus/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
 
 **Data:** `~/markus/apps/{app}/twitter/` (strategy.json, posts.json, failures.json, research/)
 **App config:** `~/markus/apps/{app}/app.json`
 
-### Key Scripts (all in `~/markus/private/`)
+### Key Scripts (all in `~/markus/`)
 ```bash
 # Create a tweet/thread (auto-picks from queue)
 node engines/create-text-post-engine.js --app <APP> --platform twitter --next --schedule "2026-03-04T14:30:00Z"

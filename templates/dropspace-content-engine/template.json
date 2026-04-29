@@ -67,10 +67,10 @@
     "Edit app.json — replace all YOUR_* placeholders with your product details",
     "Edit FORMAT.md — customize voice and per-platform rules",
     "Edit CONTEXT.md — fill in product facts, features, and what NOT to claim",
-    "Run: node ~/markus/private/scripts/setup-crons.js",
+    "Run: node ~/markus/scripts/setup-crons.js",
     "Create crons in OpenClaw with the output from setup-crons.js",
     "Optional: set up X research with Bird CLI (see engage/ directory)",
-    "Test with: node ~/markus/private/scripts/test-pipeline.js --app YOUR_APP"
+    "Test with: node ~/markus/scripts/test-pipeline.js --app YOUR_APP"
   ],
   "files": ["app.json", "FORMAT.md", "CONTEXT.md"]
 }

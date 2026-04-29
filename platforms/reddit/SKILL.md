@@ -9,12 +9,12 @@ Automate Reddit marketing with text-only posts to your configured subreddit. Red
 
 ## Pipeline Architecture
 
-All platforms share a common engine at `~/markus/private/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
+All platforms share a common engine at `~/markus/`. No per-platform scripts — everything runs through shared engines with platform config from `platforms.js`.
 
 **Data:** `~/markus/apps/{app}/reddit/` (strategy.json, posts.json, failures.json)
 **App config:** `~/markus/apps/{app}/app.json`
 
-### Key Scripts (all in `~/markus/private/`)
+### Key Scripts (all in `~/markus/`)
 ```bash
 # Create a post (auto-picks from queue)
 node engines/create-text-post-engine.js --app <APP> --platform reddit --next --schedule "2026-03-04T15:00:00Z"
