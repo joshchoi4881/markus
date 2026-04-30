@@ -79,7 +79,7 @@ curl -s https://api.dropspace.dev/dropspace/status \
   -H "Authorization: Bearer $DROPSPACE_API_KEY"
 ```
 Connections: OAuth-connected accounts with platform, username, account_type, is_active, expires_at. Managed via dashboard.
-Dropspace status: Shows which official Dropspace accounts (facebook, linkedin, twitter, reddit, instagram, tiktok) are connected and available for the `dropspace_platforms` field.
+Dropspace status: Shows which official Dropspace accounts (facebook, linkedin, twitter, reddit, instagram, tiktok, youtube) are connected and available for the `dropspace_platforms` field.
 
 ### 2. Create a launch (AI generates platform-specific content)
 ```bash
@@ -333,7 +333,7 @@ Returns: id, platform, entity_id, account_info (username, display_name), account
 |--------|----------|-------------|
 | GET | /dropspace/status | Check which official Dropspace accounts are connected |
 
-Returns all 6 auto-post platforms (facebook, linkedin, twitter, reddit, instagram, tiktok) with connected status and account_name. Use `connected_platforms` to know valid values for `dropspace_platforms` field.
+Returns all 7 auto-post platforms (facebook, linkedin, twitter, reddit, instagram, tiktok, youtube) in canonical order with connected status and account_name. Use `connected_platforms` to know valid values for `dropspace_platforms` field.
 
 ## API Keys Management
 
