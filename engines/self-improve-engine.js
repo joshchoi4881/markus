@@ -421,6 +421,9 @@ async function _runSelfImprove(config) {
         problem: appConfig.problem || '',
         differentiator: appConfig.differentiator || '',
         voice: appConfig.voice || '',
+        url: appConfig.url || '',
+        cta: appConfig.cta?.[platform] || appConfig.cta?.default || '',
+        urlRule: 'When a post needs a URL or CTA link, use ONLY product.url and product.cta. Never invent or recall URLs from prior context.',
       },
       platformConversions: {
         count: platformConversionCount,

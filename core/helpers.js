@@ -440,5 +440,26 @@ async function sendAppReport(appName, text) {
     console.error(`⚠️ No slackChannel configured for ${appName} — skipping Slack delivery`);
     return { ok: false, error: 'no channel' };
   }
-  return sendSlack(channel, text);
+
+  const crypto = require('crypto');
+  const now = Date.now();
+  const dedupeWindowMs = 12 * 60 * 60 * 1000;
+  const dedupePath = path.join(pathsLib.appRoot(appName), '.slack-report-deliveries.json');
+  const hash = crypto.createHash('sha256').update(`${channel}\n${text}`).digest('hex');
+  const log = loadJSON(dedupePath, { deliveries: [] });
+  const deliveries = Array.isArray(log.deliveries) ? log.deliveries : [];
+  const recent = deliveries.filter(d => d && now - (d.sentAtMs || 0) < dedupeWindowMs);
+
+  if (recent.some(d => d.hash === hash)) {
+    console.log(`📭 Duplicate Slack report suppressed for ${appName} (${channel})`);
+    saveJSON(dedupePath, { deliveries: recent });
+    return { ok: true, skipped: true, reason: 'duplicate-report' };
+  }
+
+  const result = await sendSlack(channel, text);
+  if (result?.ok) {
+    recent.push({ hash, channel, sentAtMs: now });
+    saveJSON(dedupePath, { deliveries: recent.slice(-200) });
+  }
+  return result;
 }

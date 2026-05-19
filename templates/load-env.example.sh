@@ -42,6 +42,10 @@
 #   export GOOGLE_APPLICATION_CREDENTIALS="/path/to/adc-credentials.json"
 #   export GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
 
+# Cron and other non-interactive shells often do not inherit your login shell PATH.
+# Add common user install dirs so subprocesses can find tools like mcporter, gws, bird, and gh.
+export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$PATH"
+
 # === REQUIRED ===
 
 # Dropspace API keys (one per app)
