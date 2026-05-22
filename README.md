@@ -205,9 +205,19 @@ Ongoing   Analytics cron         → Detects post deletions → post.deleted web
 
 ## Paid Distribution
 
-Meta Ads CLI support is planned as an optional paid-distribution layer on top of organic posts. Keep it disabled by default, require approval before spend, and route all candidate/report notifications to each app's configured `notifications` target.
+Meta Ads CLI support is an optional paid-distribution layer on top of organic posts. Keep it disabled by default, require approval before spend, and route all candidate/report notifications to each app's configured `notifications` target.
 
-See `docs/META_ADS_CLI_PLAN.md` for the implementation plan and config contract.
+First slice:
+
+```bash
+node scripts/meta-suggest-boosts.js --app myapp --include-disabled
+node scripts/meta-create-draft.js --app myapp --candidate-id <id>
+node scripts/meta-report.js --app myapp
+```
+
+`meta-create-draft.js` prepares a local draft intent by default. It only calls the Meta Ads CLI with `--execute`, and created campaigns are requested as paused.
+
+See `docs/META_ADS_CLI_PLAN.md` for the full workflow and guardrails.
 
 ## Adding a New App
 
