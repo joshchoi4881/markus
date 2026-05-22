@@ -240,7 +240,7 @@ function saveDraft(appName, draft) {
 }
 
 function runMetaAdsCli(args, options = {}) {
-  const command = options.command || process.env.META_ADS_CLI_COMMAND || 'ads';
+  const command = options.command || process.env.META_ADS_CLI_COMMAND || 'meta';
   const result = spawnSync(command, args, { encoding: 'utf8' });
   return {
     command,
@@ -251,6 +251,26 @@ function runMetaAdsCli(args, options = {}) {
     stderr: result.stderr || '',
     error: result.error ? result.error.message : null,
   };
+}
+
+function metaObjective(objective) {
+  const normalized = String(objective || '').toLowerCase();
+  const map = {
+    traffic: 'outcome_traffic',
+    conversions: 'outcome_sales',
+    sales: 'outcome_sales',
+    leads: 'outcome_leads',
+    engagement: 'outcome_engagement',
+    awareness: 'outcome_awareness',
+    app: 'outcome_app_promotion',
+    app_promotion: 'outcome_app_promotion',
+  };
+  return map[normalized] || normalized || 'outcome_traffic';
+}
+
+function dollarsToCents(amount) {
+  const n = Number(amount || 0);
+  return String(Math.round(n * 100));
 }
 
 function createDraft(appName, candidateId, options = {}) {
@@ -280,16 +300,18 @@ function createDraft(appName, candidateId, options = {}) {
   }
 
   const cliArgs = [
-    'campaigns',
+    '--output',
+    'json',
+    '--no-input',
+    'ads',
+    '--ad-account-id',
+    meta.adAccountId,
+    'campaign',
     'create',
-    '--ad-account-id', meta.adAccountId,
     '--name', (appConfig.name || appName) + ' boost ' + candidate.id,
-    '--objective', draft.objective,
-    '--status', 'PAUSED',
-    '--daily-budget', String(draft.dailyBudget),
-    '--destination-url', draft.destinationUrl,
-    '--source-post-url', draft.sourcePostUrl,
-    '--primary-text', draft.primaryText,
+    '--objective', metaObjective(draft.objective),
+    '--status', 'paused',
+    '--daily-budget', dollarsToCents(draft.dailyBudget),
   ];
 
   const cli = runMetaAdsCli(cliArgs, options);
