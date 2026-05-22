@@ -203,6 +203,12 @@ node scripts/init-app.js --app myapp --platforms tiktok,instagram,twitter
 Ongoing   Analytics cron         → Detects post deletions → post.deleted webhook → Slack
 ```
 
+## Paid Distribution
+
+Meta Ads CLI support is planned as an optional paid-distribution layer on top of organic posts. Keep it disabled by default, require approval before spend, and route all candidate/report notifications to each app's configured `notifications` target.
+
+See `docs/META_ADS_CLI_PLAN.md` for the implementation plan and config contract.
+
 ## Adding a New App
 
 ```bash

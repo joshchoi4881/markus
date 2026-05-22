@@ -111,6 +111,27 @@
       "repo": ""
     }
   },
+  "paidDistribution": {
+    "_comment": "Optional paid growth layer. Keep disabled until the app has Meta Ads CLI credentials and spend approval rules.",
+    "meta": {
+      "enabled": false,
+      "approvalRequired": true,
+      "adAccountId": "",
+      "businessId": "",
+      "pixelId": "",
+      "dailyBudgetCap": 20,
+      "lifetimeBudgetCap": 100,
+      "defaultObjective": "traffic",
+      "boostRules": {
+        "sourcePlatforms": [
+          "instagram",
+          "facebook"
+        ],
+        "minOrganicEngagementRate": 0.03,
+        "maxAgeHours": 72
+      }
+    }
+  },
   "xResearch": {
     "_comment": "Search queries for X/Twitter research (what's trending in your niche)",
     "queries": [
