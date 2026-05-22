@@ -217,8 +217,6 @@ node scripts/meta-report.js --app myapp
 
 `meta-create-draft.js` prepares a local draft intent by default. It only calls the Meta Ads CLI with `--execute`, and created campaigns are requested as paused.
 
-See `docs/META_ADS_CLI_PLAN.md` for the full workflow and guardrails.
-
 ## Adding a New App
 
 ```bash
