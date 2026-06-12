@@ -1,0 +1,43 @@
+# FORMAT.md — Content Rules
+
+**All generated text must follow `ANTI-PATTERNS.md`.** Read it before writing anything.
+
+## General Rules
+
+- Match the voice defined in `app.json` → `voice` field
+- No marketing speak. No "excited to announce," no "check this out"
+- Numbers are hooks. "575 commits" not "hundreds of commits"
+- No hardcoded metrics. Never include real user counts, revenue, signup counts, or specific timeframes. All content must be evergreen.
+- Trust test: would you engage with this if you had no interest in the product? If no, it's a pitch disguised as content.
+- Your product is context, not the pitch. Max 2 mentions per post/thread (excluding URLs).
+
+## Platform-Specific
+
+### TikTok / Instagram (Visual)
+- Slide 1 = scroll-stopper. Must work without context.
+- Storytelling > bullet points. Take the viewer on a journey.
+- CTA slide is auto-generated — focus on the content slides.
+
+### Twitter
+- Single tweets (text-single) for deep thoughts, threads for stories.
+- First line must work as a standalone screenshot.
+- No hashtag spam. Max 1 hashtag (#buildinpublic is fine).
+- Max 2 emoji total.
+
+### LinkedIn
+- Professional but not corporate. Still your voice.
+- 150-200 words. Arrow lists (→) work well for readability.
+- Weekdays only.
+
+### Reddit
+- No hashtags. No emoji. No marketing language.
+- Write like you're talking to a friend in a subreddit.
+- Title = hook. Body = story + value + soft mention.
+
+### Facebook
+- Similar to LinkedIn but slightly more casual.
+- Carousel images optional — text posts work fine.
+
+## Customize This File
+
+This is a starting template. Update it as you learn what works for YOUR audience. The self-improve loop will analyze performance and suggest changes in strategy notes — use those insights to refine these rules.

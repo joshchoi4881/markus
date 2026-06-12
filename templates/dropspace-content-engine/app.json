@@ -1,0 +1,165 @@
+{
+  "name": "{{APP_NAME}}",
+  "description": "YOUR_DESCRIPTION",
+  "audience": "YOUR_AUDIENCE",
+  "problem": "YOUR_PROBLEM",
+  "differentiator": "YOUR_DIFFERENTIATOR",
+  "url": "YOUR_APP_URL",
+  "category": "saas",
+  "monetization": "subscription",
+  "voice": "lowercase, casual, genuine. write like a real person, not a brand.",
+  "pipelineType": "ai-generated",
+  "apiKeyEnv": "{{API_KEY_ENV}}",
+  "notifications": {
+    "channel": "slack",
+    "target": "YOUR_CHANNEL_ID"
+  },
+  "minQueue": 7,
+  "platforms": {
+    "tiktok": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "11:00",
+        "15:00",
+        "19:00"
+      ],
+      "tiktokPrivacyLevel": "SELF_ONLY",
+      "tiktokSettings": {
+        "allow_comments": true,
+        "allow_duet": true,
+        "allow_stitch": true,
+        "auto_add_music": false,
+        "is_commercial": false,
+        "is_your_brand": false,
+        "is_branded_content": false
+      },
+      "useDropspacePlatform": true
+    },
+    "instagram": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "12:00"
+      ],
+      "useDropspacePlatform": true
+    },
+    "twitter": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "09:30",
+        "17:00"
+      ],
+      "twitterIsPremium": false,
+      "useDropspacePlatform": true
+    },
+    "linkedin": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "08:30"
+      ],
+      "weekdaysOnly": true,
+      "useDropspacePlatform": true
+    },
+    "reddit": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "10:00"
+      ],
+      "useDropspacePlatform": true
+    },
+    "facebook": {
+      "enabled": true,
+      "contentSource": "ai-generated",
+      "postingTimes": [
+        "13:00"
+      ],
+      "useDropspacePlatform": true
+    }
+  },
+  "integrations": {
+    "supabase": {
+      "projectId": "",
+      "testEmailPatterns": [
+        "@yourcompany\\.com$",
+        "test@"
+      ]
+    },
+    "stripe": {
+      "productIds": []
+    },
+    "posthog": {
+      "projectId": ""
+    },
+    "ga4": {
+      "propertyId": ""
+    },
+    "sentry": {
+      "org": "",
+      "project": ""
+    },
+    "github": {
+      "org": "",
+      "repo": ""
+    }
+  },
+  "xResearch": {
+    "queries": [
+      "\"YOUR_NICHE\" tool",
+      "#buildinpublic YOUR_CATEGORY",
+      "YOUR_PROBLEM solution",
+      "best tool for YOUR_USE_CASE"
+    ],
+    "competitors": [
+      "COMPETITOR_1",
+      "COMPETITOR_2"
+    ]
+  },
+  "engage": {
+    "twitter": {
+      "queries": [
+        "\"YOUR_NICHE\" pain point -from:YOUR_HANDLE",
+        "YOUR_PROBLEM frustrated -from:YOUR_HANDLE",
+        "anyone know a good tool for YOUR_USE_CASE -from:YOUR_HANDLE"
+      ],
+      "blockedHandles": [
+        "YOUR_HANDLE"
+      ],
+      "maxAgeHours": 48,
+      "minLikes": 1,
+      "dedupDays": 14,
+      "xApiCredentials": {
+        "clientId": "X_MYAPP_CLIENT_ID",
+        "clientSecret": "X_MYAPP_CLIENT_SECRET",
+        "accessToken": "X_MYAPP_ACCESS_TOKEN",
+        "refreshToken": "X_MYAPP_REFRESH_TOKEN",
+        "bearerToken": "X_MYAPP_BEARER_TOKEN"
+      }
+    }
+  },
+  "cta": {
+    "tiktok": "try it → link in bio",
+    "instagram": "link in bio",
+    "twitter": "try it →",
+    "linkedin": "check it out →",
+    "reddit": "been using this →",
+    "facebook": "try it free →",
+    "default": "link in bio"
+  },
+  "skipDays": [],
+  "mediaGen": {
+    "image": {
+      "provider": "fal",
+      "model": "nano-banana-2",
+      "envKey": "FAL_KEY"
+    },
+    "video": {
+      "provider": "fal",
+      "model": "veo3.1",
+      "envKey": "FAL_KEY"
+    }
+  }
+}
