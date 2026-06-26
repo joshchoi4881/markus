@@ -118,6 +118,21 @@ async function pollUntilDone(submitData, timeoutMs = 300000) {
   throw new Error(`Timeout after ${timeoutMs}ms waiting for ${requestId}`);
 }
 
+// A Fal job failure (or submit response) that is transient and worth resubmitting rather than
+// failing the whole post. veo3.1 generates audio via ElevenLabs TTS, which caps our subscription
+// at 3 concurrent requests; under batch load the job returns FAILED with a 429
+// `concurrent_limit_exceeded` / `rate_limit_error`. A freed slot resolves it within seconds.
+// (MARKUS-3: ~55 warn/wk of exactly this.)
+function isTransientFalFailure(err) {
+  const msg = (err && err.message ? err.message : String(err)).toLowerCase();
+  return (
+    msg.includes('concurrent_limit_exceeded') ||
+    msg.includes('rate_limit_error') ||
+    msg.includes('too many concurrent') ||
+    msg.includes('rate limit')
+  );
+}
+
 // ── Commands ──
 async function submitImage() {
   const prompt = getArg('prompt');
@@ -192,39 +207,73 @@ async function submitVideo() {
     duration: duration,
   };
 
-  process.stderr.write(`Submitting video to ${model}...\n`);
-  const { status, data } = await request(`https://queue.fal.run/${model}`, 'POST', input);
-
-  if (status >= 400) {
-    console.error(`Submit failed (${status}):`, JSON.stringify(data));
-    process.exit(1);
-  }
-
-  const requestId = data.request_id;
-  process.stderr.write(`Request ID: ${requestId}\n`);
-
-  if (noWait) {
-    console.log(JSON.stringify({ request_id: requestId, model, ...data }));
-    return;
-  }
-
-  // Poll for result (videos take longer)
+  // Submit + poll with budget-aware retry. veo3.1's downstream ElevenLabs TTS caps at 3 concurrent
+  // requests on our plan, so under batch load the submit 429s or the job returns FAILED with a
+  // transient `concurrent_limit_exceeded`. Resubmitting a fresh job after a short backoff succeeds
+  // once a slot frees — and is safe: a FAILED job produced no output, so there's no duplicate video.
+  // All attempts share the one `--timeout` budget so we never overrun the parent execSync bound.
+  // (MARKUS-3: ~55 warn/wk of exactly this 429.)
   const timeout = parseInt(getArg('timeout') || '300000');
-  const result = await pollUntilDone(data, timeout);
+  const MAX_ATTEMPTS = 3;
+  const deadline = Date.now() + timeout;
+  let lastErr;
 
-  if (outPath && result.video?.url) {
-    const dir = path.dirname(outPath);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    await download(result.video.url, outPath);
-    process.stderr.write(`Downloaded to ${outPath}\n`);
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    if (deadline - Date.now() < 30000) break; // not enough budget left for another generation
+
+    process.stderr.write(`Submitting video to ${model} (attempt ${attempt}/${MAX_ATTEMPTS})...\n`);
+    const { status, data } = await request(`https://queue.fal.run/${model}`, 'POST', input);
+
+    if (status >= 400) {
+      if ((status === 429 || status >= 500) && attempt < MAX_ATTEMPTS) {
+        const wait = Math.min(attempt * 4000, 15000);
+        process.stderr.write(`Submit ${status} — retrying in ${wait}ms\n`);
+        await new Promise(r => setTimeout(r, wait));
+        continue;
+      }
+      console.error(`Submit failed (${status}):`, JSON.stringify(data));
+      process.exit(1);
+    }
+
+    const requestId = data.request_id;
+    process.stderr.write(`Request ID: ${requestId}\n`);
+
+    if (noWait) {
+      console.log(JSON.stringify({ request_id: requestId, model, ...data }));
+      return;
+    }
+
+    try {
+      // Poll for result (videos take longer); cap to the remaining shared budget.
+      const result = await pollUntilDone(data, deadline - Date.now());
+
+      if (outPath && result.video?.url) {
+        const dir = path.dirname(outPath);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+        await download(result.video.url, outPath);
+        process.stderr.write(`Downloaded to ${outPath}\n`);
+      }
+
+      console.log(JSON.stringify({
+        request_id: requestId,
+        model,
+        video: result.video || null,
+        timings: result.timings,
+      }));
+      return;
+    } catch (e) {
+      lastErr = e;
+      if (isTransientFalFailure(e) && attempt < MAX_ATTEMPTS && deadline - Date.now() > 30000) {
+        const wait = Math.min(attempt * 4000, 15000);
+        process.stderr.write(`Transient generation failure — retrying in ${wait}ms: ${e.message}\n`);
+        await new Promise(r => setTimeout(r, wait));
+        continue;
+      }
+      throw e;
+    }
   }
 
-  console.log(JSON.stringify({
-    request_id: requestId,
-    model,
-    video: result.video || null,
-    timings: result.timings,
-  }));
+  throw lastErr || new Error(`video generation failed within ${timeout}ms budget`);
 }
 
 async function checkStatus() {
